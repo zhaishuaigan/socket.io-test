@@ -20,8 +20,10 @@ hello
     });
 
 
-    socket.on('private-message', function () {
-        console.log(arguments);
+    socket.on('private-message', function (user, message) {
+        console.log('收到消息');
+        console.log('用户信息', user);
+        console.log('消息内容', message);
     });
 </script>
 </body>
