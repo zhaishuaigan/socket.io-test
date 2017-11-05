@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>聊天服务器管理</title>
+</head>
+<body>
+hello
+
+<script src="static/libs/socket.io.js"></script>
+<script>
+    var socket = io();
+    var token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiIxIiwibmlja25hbWUiOiLnrqHnkIblkZgiLCJhdmF0YXIiOiJ4eHguanBnIiwiaWF0IjoxNTA5OTAwNDYxfQ.w6cmN121mj_IHboAK78HVz_BFwvH-6dW2ghdA0hGXjA';
+    socket.on('connect-success', function () {
+        console.log('connect success');
+        socket.emit('login', token);
+    });
+    socket.on('login', function (userInfo) {
+        console.log('login success', userInfo);
+    });
+
+
+    socket.on('private-message', function () {
+        console.log(arguments);
+    });
+</script>
+</body>
+</html>
